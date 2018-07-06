@@ -1,0 +1,51 @@
+#topo {
+    background-color: #81CFE0;
+    text-align: center;
+    padding: 60px 0px 30px 0px;
+    margin: 10px 0px 10px 0px;
+}
+
+#menuResponsivo {
+    background-color: #81CFE0;
+    display: none;
+}
+
+#menu {
+    background-color: #C5EFF7;
+    margin-bottom: 10px;
+    padding: 10px 0px 10px 20px;
+}
+
+#conteudo {
+    background-color: #E4F1FE;
+    margin-bottom: 10px;
+    padding: 10px 20px 10px 20px;
+    border-style: solid;
+    border-color: white;
+    border-width: 0px 0px 0px 10px;
+}
+
+#rodape {
+    background-color: black;
+    color: white;
+    padding: 10px 0px 10px 20px;
+    font-size: 80%;
+    font-weight: bold;
+}
+
+@media only screen and (max-width: 768px) {
+    #menu {
+        display: none;
+    }
+    #menuResponsivo {
+        display: block;
+    }
+    #topo {
+        margin-top: 0px;
+        padding: 20px 0px 20px 0px;
+    }
+    #conteudo {
+        border-width: 0px;
+        margin: 0px 10px 10px 10px;
+    }
+}
