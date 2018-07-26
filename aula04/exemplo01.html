@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <title>Exemplo Form 1</title>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-6">
+                <form onsubmit="imprimirFrase(event)">
+                    <div class="form-group">
+                        <label>Digite o seu nome</label>
+                        <input type="text" class="form-control" id="nome">
+                    </div>
+                    <input type="submit" class="btn btn-primary" value="Enviar">
+                </form>
+            </div>
+        </div>
+
+        <br>
+
+        <div class="row">
+            <div class="col">
+                <h4 id="resposta"></h4>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        let imprimirFrase = (evento) => {
+            // Previne que a página seja recarregada
+            evento.preventDefault();
+            // Pega o valor do campo de texto "nome"
+            let nome = document.getElementById('nome').value;
+            /*
+                Cria uma frase contendo o nome que foi digitado
+                no campo de texto
+            */
+            let frase = `Olá, ${nome}!`;
+            // Coloca a frase gerada dentro do h4 de resposta
+            document.getElementById('resposta').innerHTML = frase;
+        }
+    </script>
+</body>
+
+</html>

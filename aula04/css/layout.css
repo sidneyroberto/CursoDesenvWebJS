@@ -1,0 +1,18 @@
+#topo {
+    background-color: #FABE58;
+    text-align: center;
+    margin: 10px 0px 10px 0px;
+    padding: 60px 0px 30px 0px;
+}
+
+#conteudo {
+    padding: 10px 20px 10px 20px;
+    margin-bottom: 10px;
+}
+
+#rodape {
+    padding: 20px;
+    background-color: #EB9532;
+    font-weight: bold;
+    font-size: 80%;
+}

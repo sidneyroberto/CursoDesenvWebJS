@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <title>Exemplo Calculadora</title>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <form class="form-inline">
+                    <input type="number" onkeyup="calcular()" class="form-control" id="numero1">
+                    <select onchange="calcular()" id="operacao" class="form-control">
+                        <option value="soma">+</option>
+                        <option value="subtracao">-</option>
+                        <option value="divisao">/</option>
+                        <option value="multiplicacao">*</option>
+                    </select>
+                    <input type="number" onkeyup="calcular()" class="form-control" id="numero2">
+                    <label>&nbsp;=&nbsp;</label>
+                    <span id="resultado"></span>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        /* 
+            Ao invés de recuperar os elementos utilizando
+            document.getElementById, agora eu consigo
+            recupera-los usando apenas o $! Que maravilha!
+        */
+        $ = document.getElementById.bind(document);
+
+        let calcular = () => {
+            // Converte os valores de string para número real
+            let n1 = parseFloat($('numero1').value);
+            let n2 = parseFloat($('numero2').value);
+
+            let resultado = '';
+
+            // Se tanto n1 quanto n2 forem números...
+            if (!isNaN(n1) && !isNaN(n2)) {
+                let operacao = $('operacao').value;
+                if (operacao === 'soma') resultado = `${n1 + n2}`;
+                else if (operacao === 'subtracao') resultado = `${n1 - n2}`;
+                else if (operacao === 'divisao' && n2 !== 0) resultado = `${n1 / n2}`;
+                else if (operacao === 'multiplicacao') resultado = `${n1 * n2}`;
+            }
+            $('resultado').innerHTML = resultado;
+        }
+    </script>
+</body>
+
+</html>
