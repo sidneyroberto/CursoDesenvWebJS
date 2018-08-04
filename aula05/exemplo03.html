@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-br" ng-app="imc">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <title>Cálculo de IMC</title>
+</head>
+
+<body>
+
+    <div class="container" ng-controller="ImcController">
+        <div class="jumbotron text-center">
+            <h1>Cálculo de IMC</h1>
+        </div>
+
+        <br>
+
+        <div class="row">
+            <div class="col-md-6">
+                <form ng-submit="calcular()">
+                    <div class="form-group">
+                        <label>Peso (kg)</label>
+                        <input type="number" step="0.01" class="form-control" ng-model="peso" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Altura (metro)</label>
+                        <input type="number" step="0.01" class="form-control" ng-model="altura" required>
+                    </div>
+                    <input type="submit" class="btn btn-primary" value="Calcular">
+                </form>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <span>IMC: {{ imc }} Grau de obesidade: {{ grauObesidade }}</span>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script>
+        // Carrega a aplicação AngularJS 'imc'
+        let app = angular.module('imc', []);
+        /*
+            Cria o controlador 'ImcController'.
+            O código do controlador vai dentro de uma function.
+            A variável global $scope dá acesso às variáveis
+            peso e altura.
+        */
+        app.controller('ImcController', function ($scope) {
+
+            $scope.calcular = function () {
+                // Calcula o valor do IMC
+                $scope.imc = $scope.peso / ($scope.altura * $scope.altura);
+
+                // Cria a variável grauObesidade e inicializa com uma string vazia
+                $scope.grauObesidade = '';
+
+                if ($scope.imc < 18.5) {
+                    $scope.grauObesidade = 'Abaixo do peso';
+                } else if ($scope.imc >= 18.5 && $scope.imc < 25) {
+                    $scope.grauObesidade = 'Peso normal';
+                } else if ($scope.imc >= 25 && $scope.imc < 30) {
+                    $scope.grauObesidade = 'Sobrepeso';
+                } else if ($scope.imc >= 30 && $scope.imc < 35) {
+                    $scope.grauObesidade = 'Obesidade Grau I';
+                } else if ($scope.imc >= 35 && $scope.imc < 40) {
+                    $scope.grauObesidade = 'Obesidade Grau II';
+                } else {
+                    $scope.grauObesidade = 'Obesidade Grau III';
+                }
+            };
+        });
+    </script>
+</body>
+
+</html>

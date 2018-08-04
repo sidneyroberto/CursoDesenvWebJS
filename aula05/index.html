@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-br" ng-app="agenda">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <title>Agenda</title>
+</head>
+
+<body>
+
+    <div class="container" ng-controller="AgendaController">
+        <div class="jumbotron text-center">
+            <h1>Agenda</h1>
+        </div>
+
+        <br>
+
+        <div class="row">
+            <div class="col-md-6">
+                <form ng-submit="salvar()">
+                    <div class="form-group">
+                        <label>Nome:</label>
+                        <input type="text" class="form-control" ng-model="nome" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Telefone:</label>
+                        <input type="text" class="form-control" ng-model="telefone" required>
+                    </div>
+                    <input type="submit" class="btn btn-primary" value="Salvar">
+                </form>
+            </div>
+        </div>
+
+        <br>
+
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <table class="table text-center">
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Telefone</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="c in contatos">
+                            <td>{{ c.nome }}</td>
+                            <td>{{ c.telefone }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="js/agenda_controller.js"></script>
+</body>
+
+</html>
