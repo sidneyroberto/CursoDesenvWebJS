@@ -8,7 +8,7 @@ app.controller('ContatosController', function ($scope, $http) {
     $scope.carregarContatos = function () {
         // Executa apenas se houver algum filtro de pesquisa
         if ($scope.filtro) {
-            $scope.erro = false;
+            $scope.erroCargaContatos = false;
 
             $http
                 .get(enderecoServidor + $scope.filtro)
@@ -20,10 +20,37 @@ app.controller('ContatosController', function ($scope, $http) {
                     // Função de fracasso..
                     function (erro) {
                         console.log(erro);
-                        $scope.erro = true;
+                        $scope.erroCargaContatos = true;
                     }
                 );
         }
     };
 
+    $scope.aoRemover = function (contato) {
+        $scope.contatoSelecionado = contato;
+    };
+
+    $scope.remover = function () {
+        $scope.sucesso = false;
+        $scope.erro = false;
+        var id = $scope.contatoSelecionado._id;
+
+        $http
+            .delete(enderecoServidor + id)
+            .then(
+                // Se tudo der certo...
+                function () {
+                    $scope.sucesso = true;
+                    $scope.contatos =
+                        $scope.contatos.filter(function (contato) {
+                            return contato._id !== $scope.contatoSelecionado._id;
+                        });
+                },
+                // Se der algum problema...
+                function (erro) {
+                    console.log(erro);
+                    $scope.erro = true;
+                }
+            );
+    };
 });

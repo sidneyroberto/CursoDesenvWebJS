@@ -2,6 +2,26 @@ import Contato from '../models/contato';
 
 class ContatoController {
 
+
+    /**
+     * Recupera um único contato
+     * pelo seu identificador
+     */
+    recuperarUnico(req, res) {
+        let id = req.params.id;
+
+        Contato
+            .findById(id)
+            .exec()
+            .then(
+                (contato) => res.json(contato),
+                (erro) => {
+                    console.log(erro);
+                    res.status(500).json('Erro ao tentar recuperar o contato');
+                }
+            );
+    }
+
     /**
      * Recupera todos os contatos
      * do banco de dados

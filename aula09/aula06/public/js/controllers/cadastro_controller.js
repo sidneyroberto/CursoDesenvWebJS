@@ -1,6 +1,10 @@
 var app = angular.module('agenda');
 app.controller('CadastroController', function ($scope, $http) {
 
+    $('#telefone').mask('(00) 00000-0000', {
+        placeholder: '(__) _____-____'
+    });
+
     var enderecoServidor = 'http://localhost:3000/contatos';
 
     $scope.salvar = function () {
@@ -30,4 +34,5 @@ app.controller('CadastroController', function ($scope, $http) {
                 }
             );
     };
+
 });

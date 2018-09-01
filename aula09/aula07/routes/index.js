@@ -9,6 +9,9 @@ router.get('/', (req, res) => {
   res.json('Colé, rapaziada!');
 });
 
+// Serviço de recuperação de um único contato
+router.get('/contatos/unico/:id', contatoCtrl.recuperarUnico);
+
 // Serviço de recuperação de contatos
 router.get('/contatos/:filtro', contatoCtrl.recuperarTodos);
 
