@@ -1,0 +1,86 @@
+<div class="row">
+    <div class="col text-center">
+        <h5>Contatos cadastrados</h5>
+    </div>
+</div>
+
+<br>
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+        <input type="text" placeholder="Digite o nome do contato" ng-model="filtro" ng-change="carregarContatos()" class="form-control">
+    </div>
+    <div class="col-md-3"></div>
+</div>
+
+
+
+
+
+
+
+
+<br>
+<div class="row" ng-show="erroCargaContatos">
+    <div class="col">
+        <span class="alert alert-danger">Ocorreu um erro ao tentar consultar os contatos</span>
+    </div>
+</div>
+<div class="row" ng-show="erro">
+    <div class="col">
+        <span class="alert alert-danger">Ocorreu um erro ao tentar remover o contato</span>
+    </div>
+</div>
+<div class="row" ng-show="sucesso">
+    <div class="col">
+        <span class="alert alert-success">Contato removido</span>
+    </div>
+</div>
+<br>
+
+<div class="row" ng-show="filtro && contatos.length > 0">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <table class="table table-hover table-striped text-center">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Telefone</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="c in contatos">
+                    <td>{{ c.nome }}</td>
+                    <td>{{ c.telefone }}</td>
+                    <td>
+                        <a href="#" class="btn btn-link">
+                            <i class="fas fa-edit"></i>
+                        </a>
+                        <button ng-click="aoRemover(c)" class="btn btn-link" data-toggle="modal" data-target="#modalRemocao">
+                            <i class="far fa-trash-alt"></i>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="col-md-2"></div>
+</div>
+
+<div class="modal" id="modalRemocao">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-body">
+                Deseja realmente remover o contato "{{ contatoSelecionado.nome }}"?
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="remover()">Remover</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
+            </div>
+
+        </div>
+    </div>
+</div>
