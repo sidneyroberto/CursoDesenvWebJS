@@ -1,5 +1,6 @@
 // Arquivo de configuração do banco de dados
 import mongoose from 'mongoose';
+import './contato';
 
 var dbURI = 'mongodb://localhost/agendacdw';
 mongoose.Promise = global.Promise;
